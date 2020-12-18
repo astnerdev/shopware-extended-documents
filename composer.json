@@ -1,0 +1,22 @@
+{
+    "name": "mastox/extended-documents",
+    "description": "Extend Document typ",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MastoxExtendedDocuments\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "MastoxExtendedDocuments\\MastoxExtendedDocuments",
+        "label": {
+            "de-DE": "Documents",
+            "en-GB": "Documents"
+        }
+    },
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.15",
+        "phpoffice/phpword": "^0.17.0"
+    }
+}
