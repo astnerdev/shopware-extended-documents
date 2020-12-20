@@ -11,7 +11,7 @@ class ExtendConfigCompilerPass implements CompilerPassInterface {
      */
     public function process(ContainerBuilder $container) {
         $extensions = $container->getParameter('shopware.filesystem.allowed_extensions');
-        array_push($extensions,'docx','xlsx','xls');
+        array_push($extensions, 'ods', 'xlsx', 'xls', 'docx', 'pptx', 'doc', 'odf');
         $container->setParameter('shopware.filesystem.allowed_extensions', $extensions);
     }
 }

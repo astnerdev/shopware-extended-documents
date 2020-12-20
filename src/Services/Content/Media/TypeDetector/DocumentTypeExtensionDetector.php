@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MastoxExtendedDocuments\Core\Content\Media\TypeDetector;
+namespace MastoxExtendedDocuments\Services\Content\Media\TypeDetector;
 
 use Shopware\Core\Content\Media\File\MediaFile;
 use Shopware\Core\Content\Media\MediaType\DocumentType;
@@ -9,9 +9,13 @@ use Shopware\Core\Content\Media\TypeDetector\TypeDetectorInterface;
 
 class DocumentTypeExtensionDetector implements TypeDetectorInterface {
     protected const SUPPORTED_FILE_EXTENSIONS = [
-        'docx' => [],
+        'ods' => [],
         'xlsx' => [],
         'xls' => [],
+        'docx' => [],
+        'pptx' => [],
+        'doc' => [],
+        'odf' => [],
     ];
 
     public function detect(MediaFile $mediaFile, ?MediaType $previouslyDetectedType): ?MediaType {

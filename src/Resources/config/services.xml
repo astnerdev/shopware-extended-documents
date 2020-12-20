@@ -5,7 +5,12 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="MastoxExtendedDocuments\Core\Content\Media\TypeDetector\DocumentTypeExtensionDetector">
+        <service id="MastoxExtendedDocuments\Services\Content\Media\Metadata\MetadataLoader\DocumentMetaDataLoader">
+            <tag name="shopware.metadata.loader"/>
+        </service>
+
+
+        <service id="MastoxExtendedDocuments\Services\Content\Media\TypeDetector\DocumentTypeExtensionDetector">
             <tag name="shopware.media_type.detector" priority="1"/>
         </service>
     </services>

@@ -17,6 +17,7 @@
     },
     "require": {
         "phpoffice/phpspreadsheet": "^1.15",
-        "phpoffice/phpword": "^0.17.0"
+        "phpoffice/phpword": "^0.17.0",
+        "ext-fileinfo": "*"
     }
 }
