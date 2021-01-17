@@ -2,6 +2,7 @@
     "name": "mastox/extended-documents",
     "description": "Extend Document typ",
     "type": "shopware-platform-plugin",
+    "version": "v0.0.1-dev",
     "license": "MIT",
     "autoload": {
         "psr-4": {

@@ -1,0 +1,18 @@
+{% block sw_product_detail_base_media_card %}
+    {% parent %}
+    <!-- {{ product.extensions.attachments }} -->
+    <sw-card>
+
+        <sw-media-list-selection-v2
+            :entityMediaItems="mediaItems"
+            :entity="product.extensions.attachments"
+            :uploadTag="uploadAttachmentTag"
+            :defaultFolder="defaultAttachmentMediaFolder"
+            @upload-finish="onImageUpload"
+            @item-remove="onItemRemove"
+            v-model="product.extensions.attachments"
+            @open-sidebar="onMediaUploadButtonOpenSidebar">
+        </sw-media-list-selection-v2>
+
+    </sw-card>
+{% endblock %}

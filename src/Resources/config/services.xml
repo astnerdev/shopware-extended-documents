@@ -13,5 +13,19 @@
         <service id="MastoxExtendedDocuments\Services\Content\Media\TypeDetector\DocumentTypeExtensionDetector">
             <tag name="shopware.media_type.detector" priority="1"/>
         </service>
+
+        <service id="MastoxExtendedDocuments\Entity\Downloads\ProductDownloadDefinition">
+            <tag name="shopware.entity.definition" entity="product_downloads"/>
+        </service>
+
+        <service id="MastoxExtendedDocuments\Extension\Media\MediaExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <service id="MastoxExtendedDocuments\Extension\Product\ProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
     </services>
+
+
 </container>
