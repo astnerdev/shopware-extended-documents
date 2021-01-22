@@ -1,18 +1,13 @@
 {% block sw_product_detail_base_media_card %}
     {% parent %}
-    <!-- {{ product.extensions.attachments }} -->
-    <sw-card>
-
+    <sw-card :isLoading="isLoading" title="Attachments">
         <sw-media-list-selection-v2
-            :entityMediaItems="mediaItems"
-            :entity="product.extensions.attachments"
-            :uploadTag="uploadAttachmentTag"
-            :defaultFolder="defaultAttachmentMediaFolder"
-            @upload-finish="onImageUpload"
-            @item-remove="onItemRemove"
-            v-model="product.extensions.attachments"
-            @open-sidebar="onMediaUploadButtonOpenSidebar">
+            :entityMediaItems="attachmentCollection"
+            :entity="attachmentEntity"
+            uploadTag="attachment"
+            @open-sidebar="onOpenAttachmentMediaSidebar"
+            @upload-finish="successfulUploadAttachment"
+            defaultFolderName="document">
         </sw-media-list-selection-v2>
-
     </sw-card>
 {% endblock %}

@@ -31,10 +31,7 @@ class ProductDownloadEntity extends Entity {
      */
     protected $media;
 
-    /**
-     * @var int
-     */
-    protected $counter;
+
 
     /**
      * @return string
@@ -92,19 +89,6 @@ class ProductDownloadEntity extends Entity {
         $this->media = $media;
     }
 
-    /**
-     * @return int
-     */
-    public function getCounter(): int {
-        return $this->counter;
-    }
-
-    /**
-     * @param int $counter
-     */
-    public function setCounter(int $counter): void {
-        $this->counter = $counter;
-    }
 
 
 }

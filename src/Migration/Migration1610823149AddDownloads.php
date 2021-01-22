@@ -18,7 +18,6 @@ class Migration1610823149AddDownloads extends MigrationStep {
                         media_id binary(16) not null,
                         created_at datetime not null ,
                         updated_at datetime null,
-                        counter int default 0,
 
                         PRIMARY KEY (id,product_id,media_id),
                         constraint `uniq.product_downloads.product_id`
