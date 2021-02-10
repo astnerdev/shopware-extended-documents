@@ -4,10 +4,14 @@
         <sw-media-list-selection-v2
             :entityMediaItems="attachmentCollection"
             :entity="attachmentEntity"
+
             uploadTag="attachment"
             @open-sidebar="onOpenAttachmentMediaSidebar"
             @upload-finish="successfulUploadAttachment"
-            defaultFolderName="document">
+            defaultFolderName="document"
+            @item-remove="onRemoveItem"
+            @item-drop="onRemoveItem"
+        >
         </sw-media-list-selection-v2>
     </sw-card>
 {% endblock %}

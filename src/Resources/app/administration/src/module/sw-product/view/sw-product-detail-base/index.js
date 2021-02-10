@@ -59,6 +59,16 @@ Shopware.Component.override('sw-product-detail-base', {
             });
         },
 
+        onRemoveItem(mediaItem, index) {
+            this.attachmentRepository.delete(this.attachmentCollection[index].id, Shopware.Context.api).then(() => {
+                this.getProductAttachments(this.product.id);
+            });
+        },
+
+        onItemDrop() {
+            console.log('drop')
+        },
+
         onOpenAttachmentMediaSidebar() {
             //@TODO media-drop event ?
             this.$root.$emit('sidebar-toggle-open');
