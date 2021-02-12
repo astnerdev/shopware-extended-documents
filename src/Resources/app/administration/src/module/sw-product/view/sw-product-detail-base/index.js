@@ -7,6 +7,9 @@ Shopware.Component.override('sw-product-detail-base', {
     data() {
         return {
             attachmentCollection: [],
+            mediaModalOpen: false,
+            defaultFolderName: 'Product Attachments',
+            defaultMediaFolderId: '',
         }
     },
 
@@ -21,10 +24,10 @@ Shopware.Component.override('sw-product-detail-base', {
 
     computed: {
         attachmentRepository() {
-            return this.repositoryFactory.create('product_downloads');
+            return this.repositoryFactory.create('mtx_product_attachments');
         },
-        attachmentEntity() {
-            return this.repositoryFactory.create('product_downloads');
+        defaultMediaFolderRepository() {
+            return this.repositoryFactory.create('media_folder');
         }
     },
 
@@ -44,8 +47,20 @@ Shopware.Component.override('sw-product-detail-base', {
             });
         },
 
+
         createdComponent() {
             this.$super('createdComponent');
+            this.defaultAttachmentFolder();
+        },
+
+        defaultAttachmentFolder() {
+            const criteria = new Criteria();
+            criteria.addFilter(Criteria.equals('name', 'Product Attachments'));
+            this.defaultMediaFolderRepository.search(criteria, Shopware.Context.api).then((attachmentCollection) => {
+                this.attachmentCollection = attachmentCollection.map((data) => {
+                    this.defaultMediaFolderId = data.id;
+                });
+            });
         },
 
         successfulUploadAttachment(data) {
@@ -53,9 +68,10 @@ Shopware.Component.override('sw-product-detail-base', {
             item.mediaId = data.id;
             item.productId = this.product.id;
             item.createAt = new Date();
+            item.counter = 0;
 
             this.attachmentRepository.save(item, Shopware.Context.api).then(() => {
-                this.attachmentCollection.push(data);
+                this.attachmentCollection.push(item);
             });
         },
 
@@ -65,13 +81,26 @@ Shopware.Component.override('sw-product-detail-base', {
             });
         },
 
-        onItemDrop() {
-            console.log('drop')
+
+        onMediaSelectionChange(mediaItems) {
+            mediaItems.forEach((item) => {
+                const newMedia = this.attachmentRepository.create(this.context);
+                newMedia.mediaId = item.id;
+                newMedia.productId = this.product.id;
+                newMedia.createAt = new Date();
+                newMedia.counter = 0;
+                this.attachmentRepository.save(newMedia, Shopware.Context.api).then(() => {
+                    this.attachmentCollection.push(newMedia);
+                });
+            });
         },
 
-        onOpenAttachmentMediaSidebar() {
-            //@TODO media-drop event ?
-            this.$root.$emit('sidebar-toggle-open');
-        }
+        onOpenMediaModal() {
+            this.mediaModalOpen = true;
+        },
+
+        onCloseMediaModal() {
+            this.mediaModalOpen = false;
+        },
     }
 });

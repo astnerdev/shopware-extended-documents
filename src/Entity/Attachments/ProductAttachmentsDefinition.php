@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace MastoxExtendedDocuments\Entity\Downloads;
+namespace MastoxProductAttachments\Entity\Attachments;
 
 
 use Shopware\Core\Content\Media\MediaDefinition;
@@ -10,29 +10,31 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\IntField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 
-class   ProductDownloadDefinition extends EntityDefinition {
+class   ProductAttachmentsDefinition extends EntityDefinition {
 
-    public const ENTITY_NAME = 'product_downloads';
+    public const ENTITY_NAME = 'mtx_product_attachments';
 
     public function getEntityName(): string {
         return self::ENTITY_NAME;
     }
 
     public function getCollectionClass(): string {
-        return ProductDownloadCollection::class;
+        return ProductAttachmentsCollection::class;
     }
 
     public function getEntityClass(): string {
-        return ProductDownloadEntity::class;
+        return ProductAttachmentsEntity::class;
     }
 
     protected function defineFields(): FieldCollection {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
+            (new IntField('counter', 'counter'))->addFlags(new Required()),
 
 
             (new FkField('product_id', 'productId', ProductDefinition::class))->addFlags(new Required()),

@@ -1,5 +1,5 @@
 <?php
-namespace MastoxExtendedDocuments\CompilerPass;
+namespace MastoxProductAttachments\CompilerPass;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

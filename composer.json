@@ -1,23 +1,22 @@
 {
-    "name": "mastox/extended-documents",
+    "name": "mastox/product-attachments",
     "description": "Extend Document typ",
     "type": "shopware-platform-plugin",
     "version": "v0.0.1-dev",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "MastoxExtendedDocuments\\": "src/"
+            "MastoxProductAttachments\\": "src/"
         }
     },
     "extra": {
-        "shopware-plugin-class": "MastoxExtendedDocuments\\MastoxExtendedDocuments",
+        "shopware-plugin-class": "MastoxProductAttachments\\MastoxProductAttachments",
         "label": {
-            "de-DE": "Documents",
-            "en-GB": "Documents"
+            "de-DE": "Produkt Anhänge",
+            "en-GB": "Product Attachments"
         }
     },
     "require": {
-        "phpoffice/phpspreadsheet": "^1.15",
         "phpoffice/phpword": "^0.17.0",
         "ext-fileinfo": "*"
     }

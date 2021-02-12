@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MastoxExtendedDocuments\Services\Content\Media\TypeDetector;
+namespace MastoxProductAttachments\Services\Content\Media\TypeDetector;
 
 use Shopware\Core\Content\Media\File\MediaFile;
 use Shopware\Core\Content\Media\MediaType\DocumentType;

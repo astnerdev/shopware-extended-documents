@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace MastoxExtendedDocuments\Entity\Downloads;
+namespace MastoxProductAttachments\Entity\Attachments;
 
 
 use Shopware\Core\Content\Media\MediaEntity;
@@ -7,7 +7,7 @@ use Shopware\Core\Content\Product\ProductEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 
-class ProductDownloadEntity extends Entity {
+class ProductAttachmentsEntity extends Entity {
 
     use EntityIdTrait;
 
@@ -31,6 +31,10 @@ class ProductDownloadEntity extends Entity {
      */
     protected $media;
 
+    /**
+     * @var int $counter
+     */
+    protected $counter;
 
 
     /**
@@ -89,6 +93,17 @@ class ProductDownloadEntity extends Entity {
         $this->media = $media;
     }
 
+    /**
+     * @return int
+     */
+    public function getCounter(): int {
+        return $this->counter;
+    }
 
-
+    /**
+     * @param int $counter
+     */
+    public function setCounter(int $counter): void {
+        $this->counter = $counter;
+    }
 }

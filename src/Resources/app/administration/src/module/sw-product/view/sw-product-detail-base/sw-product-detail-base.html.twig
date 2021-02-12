@@ -3,15 +3,24 @@
     <sw-card :isLoading="isLoading" title="Attachments">
         <sw-media-list-selection-v2
             :entityMediaItems="attachmentCollection"
-            :entity="attachmentEntity"
-
+            :entity="attachmentRepository"
             uploadTag="attachment"
-            @open-sidebar="onOpenAttachmentMediaSidebar"
+            :defaultFolderName="defaultFolderName"
+            @open-sidebar="onOpenMediaModal"
             @upload-finish="successfulUploadAttachment"
-            defaultFolderName="document"
             @item-remove="onRemoveItem"
-            @item-drop="onRemoveItem"
         >
         </sw-media-list-selection-v2>
+
+        <sw-media-modal-v2
+            variant="regular"
+            :allowMultiSelect="true"
+            :initialFolderId="defaultMediaFolderId"
+            v-if="mediaModalOpen"
+            @media-upload-remove-image="onRemoveItem"
+            @media-modal-selection-change="onMediaSelectionChange"
+            @modal-close="onCloseMediaModal">
+        </sw-media-modal-v2>
+
     </sw-card>
 {% endblock %}

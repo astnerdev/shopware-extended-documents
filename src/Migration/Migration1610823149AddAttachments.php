@@ -1,23 +1,24 @@
 <?php declare(strict_types=1);
 
-namespace MastoxExtendedDocuments\Migration;
+namespace MastoxProductAttachments\Migration;
 
 use Doctrine\DBAL\Connection;
 use Shopware\Core\Framework\Migration\MigrationStep;
 
-class Migration1610823149AddDownloads extends MigrationStep {
+class Migration1610823149AddAttachments extends MigrationStep {
     public function getCreationTimestamp(): int {
         return 1610823149;
     }
 
     public function update(Connection $connection): void {
-        $sql = "    create table if not exists product_downloads
+        $sql = "    create table if not exists mtx_product_attachments
                     (
                         id binary(16) not null,
                         product_id binary(16) not null,
                         media_id binary(16) not null,
                         created_at datetime not null ,
                         updated_at datetime null,
+                        counter int not null default 0,
 
                         PRIMARY KEY (id,product_id,media_id),
                         constraint `uniq.product_downloads.product_id`

@@ -5,27 +5,33 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="MastoxExtendedDocuments\Services\Content\Media\Metadata\MetadataLoader\DocumentMetaDataLoader">
+        <service id="MastoxProductAttachments\Services\Content\Media\Metadata\MetadataLoader\DocumentMetaDataLoader">
             <tag name="shopware.metadata.loader"/>
         </service>
 
 
-        <service id="MastoxExtendedDocuments\Services\Content\Media\TypeDetector\DocumentTypeExtensionDetector">
+        <service id="MastoxProductAttachments\Services\Content\Media\TypeDetector\DocumentTypeExtensionDetector">
             <tag name="shopware.media_type.detector" priority="1"/>
         </service>
 
-        <service id="MastoxExtendedDocuments\Entity\Downloads\ProductDownloadDefinition">
-            <tag name="shopware.entity.definition" entity="product_downloads"/>
+        <service id="MastoxProductAttachments\Entity\Attachments\ProductAttachmentsDefinition">
+            <tag name="shopware.entity.definition" entity="mtx_product_attachments"/>
         </service>
 
-        <service id="MastoxExtendedDocuments\Extension\Media\MediaExtension">
+        <service id="MastoxProductAttachments\Extension\Media\MediaExtension">
             <tag name="shopware.entity.extension"/>
         </service>
 
-        <service id="MastoxExtendedDocuments\Extension\Product\ProductExtension">
+        <service id="MastoxProductAttachments\Extension\Product\ProductExtension">
             <tag name="shopware.entity.extension"/>
+        </service>
+
+
+        <service id="MastoxProductAttachments\Storefront\Page\Product\Subscriber\ProductPageCriteriaSubscriber">
+            <tag name="kernel.event_subscriber" />
         </service>
     </services>
+
 
 
 </container>

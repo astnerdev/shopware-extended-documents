@@ -1,17 +1,17 @@
 {% sw_extends '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
  {% block page_product_detail_tabs_navigation_description %}
      {{ parent() }}
-     {% block page_product_detail_tabs_navigation_downloads %}
+     {% block page_product_detail_tabs_navigation_attachments %}
          <li class="nav-item">
              <a class="nav-link product-detail-tab-navigation-link"
-                id="download-tab"
+                id="attachments-tab"
                 data-toggle="tab"
                 data-offcanvas-tabs="true"
-                href="#downloads-tab-pane"
+                href="#attachments-tab-pane"
                 role="tab"
                 aria-controls="review-tab-pane"
                 aria-selected="true">
-                 {{ "detail.downloads"|trans|sw_sanitize }}
+                 {{ "mastox-extended-documents.detail.attachments"|trans|sw_sanitize }}
                  <span class="product-detail-tab-navigation-icon">
                                             {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
                                         </span>
@@ -23,12 +23,29 @@
  {% block page_product_detail_tabs_content_description %}
      {{ parent() }}
 
-     {% block page_product_detail_tabs_content_downloads %}
+     {% block page_product_detail_tabs_content_attachments %}
          <div class="tab-pane fade show"
-              id="downloads-tab-pane"
+              id="attachments-tab-pane"
               role="tabpanel"
-              aria-labelledby="downloads-tab">
-             Hello World
+              aria-labelledby="attachments-tab">
+             <table class="table table-striped">
+                 <thead>
+                 <tr>
+                     <th scope="col">Name</th>
+                     <th scope="col">Size</th>
+                     <th scope="col">Type</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 {% for attachment in page.product.extensions.attachments %}
+                     <tr>
+                         <td>{{ attachment.media.fileName }}</td>
+                         <td>{{ attachment.media.fileSize }}</td>
+                         <td>{{ attachment.media.fileExtension }}</td>
+                     </tr>
+                 {% endfor %}
+                 </tbody>
+             </table>
          </div>
      {% endblock %}
  {% endblock %}

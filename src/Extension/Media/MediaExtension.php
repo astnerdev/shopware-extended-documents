@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
 
-namespace MastoxExtendedDocuments\Extension\Media;
+namespace MastoxProductAttachments\Extension\Media;
 
-use MastoxExtendedDocuments\Entity\Downloads\ProductDownloadDefinition;
+use MastoxProductAttachments\Entity\Attachments\ProductAttachmentsDefinition;
 use Shopware\Core\Content\Media\MediaDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\CascadeDelete;
@@ -14,7 +14,7 @@ class MediaExtension extends EntityExtension {
 
     public function extendFields(FieldCollection $collection): void {
         $collection->add(
-            (new OneToManyAssociationField('downloads', ProductDownloadDefinition::class, 'media_id'))->addFlags(new CascadeDelete())
+            (new OneToManyAssociationField('attachments', ProductAttachmentsDefinition::class, 'media_id'))->addFlags(new CascadeDelete())
         );
     }
 
